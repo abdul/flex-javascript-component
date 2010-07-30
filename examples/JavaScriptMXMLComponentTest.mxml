@@ -1,0 +1,26 @@
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="com.abdulqabiz.utils.*"  width="100%" height="100%">
+<JavaScript>
+<![CDATA[
+var myName = "Abdul Qabiz";
+function saySomething (str)
+{
+    alert (str);
+}
+function sayHelloWorld ()
+{
+    alert ("Hello World!");
+}
+]]>
+</JavaScript>
+<mx:Script>
+<![CDATA[
+import flash.external.ExternalInterface;
+private function invokeSayHelloWorld ()
+{
+    ExternalInterface.call ("sayHelloWorld");
+}
+]]>
+</mx:Script>
+<mx:Button label="invoke javascript sayHelloWorld () function" click="invokeSayHelloWorld ()"/>
+</mx:Application>
+

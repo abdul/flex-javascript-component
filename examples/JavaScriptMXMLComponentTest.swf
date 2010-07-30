@@ -1,0 +1,101 @@
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="com.abdulqabiz.utils.*"  width="100%" height="100%">
+	
+	<JavaScript>
+		<![CDATA[
+		
+		function showImagePopup (imageData)
+		{
+			  //generator = window. open ("data:image/gif;base64,"+imageData,  "", "width=300,height=300,resizable=1, toolbar=0");
+			  generator = window. open ("about:blank", "", "width=300,height=300,resizable=1, toolbar=0");
+			
+		}
+
+		function updateImage (imageData)
+		{
+			generator.document.write("<img src=\'"+ imageData + "\' height=\'26\' width=\'98\' />");
+		}
+
+		
+		]]>
+	</JavaScript>
+	
+	<mx:Script>
+		<![CDATA[
+		import flash.external.ExternalInterface;
+
+	var base64Data:String ="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"+
+    "Tata18rWtrr1rTIIAQA7";
+
+    var base64Data2:String = 'R0lGODlhYgAaAOYAAOHt+2ah6tTU1DyI5EuR5uTk5P+WzDOC45nB8fDw8ODg4NjY2O30/Xis7P+I'+
+    'xv9mtejo6Nzc3AZn3ff392Og6sXFxdHR0f+Zzv+73tXl+fv7+/D2/ZO98DaE4/z9//Pz8+fw/Ie2'+
+    '78DY9qXI8x514FSW6Ozs7Axq3m+n6z+K5fP4/Z/E8rTR9f/3+6vM8xJu3kWN5f+q1v/d7//M5v/A'+
+    '4UiP5v/V667N9H6w7brV9sbc9xVw38nJyczg+Gmj6vb5/gNl3Mne+CF34f8ekkKL5Yq375C78Bhy'+
+    '3//u99jn+s/i+Fqa6P/5/P8Vjv8/oury/P9vuv93vf/4/A9s3v8YkP9yu/8bkSd74c3NzWCe6f9O'+
+    'qqLG8nWr7P82nv/b7v/t9ht04P9FpSR54f9Ip/+NyFGV5/94vv+Kx//e74Gy7tvp+v9VreTu+06T'+
+    '5/+l1P+o1Sp94t7r+l2c6bfT9f/u9jCA4/8nl/9Epf9UrXKp7NLj+f9jtJa/8f8AhABj3P///yH5'+
+    'BAAAAAAALAAAAABiABoAAAf/gH+Cg4R/PSCFiYqLjI2Oj5COK0QnfpZ+PoIgB5ycKIMZCKKiGZGF'+
+    'FJ2ciAKDBQIFfwUQfwoJCgKsHwsLghEmCRGxr38fCn8Qs4UeJZfNn38AzX4Eg3zSfKaEA9IAfxWC'+
+    'BbwRsqw8GgIJggIQE4ImAhEQ4X/jCawFsIUh0pchgtHNqAmy1gxbNkHbmnX79gfdH3saKiSw0NAC'+
+    'KxM8jKlj5dCevVj5CB3hV2nFP2kC/xC8ZPBgwksLe8EqYGzBMIeCNGBJB5LeTAUfKCoIKSiJtB1x'+
+    'BKk4GXCQi1QHXBxEyM2bAAUTbC5oB6FCOwEWi+HSAA5WVgFbaVkkS2iONC6J/wBeSjl10UtL3erq'+
+    'FTRCGoe4KPfarSo42whRFKQtGRWE6VxQo0gtyoEDVYcAeVh4oKpw0IbIop4IsnGh9AU3o6GMcWLG'+
+    'i6AZGDAgkfFntiAS/Pg1cGwp5UpLLQdxwJ07C2eYgxI3azPIQJ/nfYb8IQO9jx06rx9giHHnzwUH'+
+    't3NL2w0t8MBrhBikEG/p2V0/eVlIE8KgefUhb6r36dJiEHgMD8jgAHh/EMeeH+TJ1Vs16AnyQwcH'+
+    '+uHPH+91w8BIl0jQmH3QNWGFfmH0Jwh4MQAYQxSCNBBAAO8NsGIAN/A2DYMFDdIAPxLAsCIMfphE'+
+    'YVXMNPMXIc7ppx8eIv4BHv94ayhZyG9+BCejbw0yIIE0ByRBCAB5VdhXMyUkUqR+WtDwxQxoSGEK'+
+    'lFKW19R5Nf6xxVH1DdaMDi80I8QGYhpZxV5sAvamSg3KMV4j79XRjARKKDLmc1QwAWiDW5pHaJw1'+
+    'SBMjI+9JA8Mij/axh2CBFqLgjHCyJAgB0uSAqDTvSdVndWeQSukgp1IZp3L9vHrnlZe8gEghoRpg'+
+    'a5yVDlqqEdKAwaedMN3YTA2zQmfspMjiammpAAAhTQelEPJshSrkme0fxR6rqqnbUuoDP0CUgAMC'+
+    'AaQgUIWXXnKCGkTqd61epSb7WKrADcKAGBEScRxef3hwxbebCZIutusKvCBbwVESwgYcBw6wMHyC'+
+    'yCdNGhxaq27B7Cp76x8/NDCFeAd8nNcf6y3ag8T+CibCiyuKkAgDPAcw5B878+xzIiqMgEonZRTR'+
+    '6B9FBF3nH3oEHYARgtDwwNZb0zBVIAA7';
+
+		
+
+		private function showImagePopup (data:String):void
+		{
+			ExternalInterface.call ("showImagePopup", data);
+		}
+
+		private function updateImage ():void
+		{
+			ExternalInterface.call ("updateImage", 'data:image/gif;base64,' + base64Data2);
+		}
+
+		]]>	
+	</mx:Script>
+	<mx:Button label="launch popup" click="showImagePopup (base64Data); button2.enabled = true"/>
+	<mx:Button id="button2" label="update-image in popup" click="updateImage ()" enabled="false"/>
+
+</mx:Application>
+

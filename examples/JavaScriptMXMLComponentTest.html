@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>JavaScript MXML Component Test</title>	
+<!-- swfobject -->
+<script type="text/javascript" src="http://blog.deconcept.com/swfobject/swfobject_source.js"></script>	
+</head>
+<body>
+	<div id="flashcontent" class="playerContent" >You don't have Flash Player 9.</div>
+	<script type="text/javascript">
+		var swfObj = new SWFObject ("JavaScriptMXMLComponentTest.swf","JavaScriptMXMLComponentTest", "500", "300", "9", "#C0D4DD", true);
+		swfObj.write("flashcontent");
+	</script>
+	<a href="javascript:void(0)" onclick="saySomething ('hey')" >invoke saySomething ()</a><br />
+	<a href="javascript:void(0)" onclick="sayHelloWorld ()" >invoke sayHelloWorld ()</a><br />
+	<a href="javascript:void(0)" onclick="alert (myName);">show myName </a><br />
+	
+</body>
+</html>
